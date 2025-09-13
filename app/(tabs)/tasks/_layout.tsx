@@ -17,6 +17,20 @@ export default function Layout() {
           headerTransparent: true,
         }}
       />
+      <Stack.Screen
+        name="create"
+        options={{
+          presentation: "modal",
+          headerLargeTitle: false,
+        }}
+      />
+      {/*<Stack.Screen*/}
+      {/*  name="edit"*/}
+      {/*  options={{*/}
+      {/*    presentation: "modal",*/}
+      {/*    headerLargeTitle: false,*/}
+      {/*  }}*/}
+      {/*/>*/}
     </Stack>
   );
 }

@@ -41,6 +41,7 @@ import { getWeekNumberFromDate, updateHomeworkIsDone, useHomeworkForWeek } from 
 import { generateId } from "@/utils/generateId";
 import { useAccountStore } from "@/stores/account";
 import { MenuView } from "@react-native-menu/menu";
+import { router } from "expo-router";
 
 export const useMagicPrediction = (content: string) => {
   const [magic, setMagic] = useState<any>(undefined);
@@ -98,6 +99,7 @@ const TaskItem = memo(({ item, fromCache = false, index, onProgressChange }: {
         magic={magic}
         fromCache={fromCache ?? false}
         onProgressChange={(newProgress: number) => onProgressChange(item, newProgress)}
+        custom={item.custom}
       />
     );
   } catch (error) {
@@ -186,7 +188,9 @@ export default function TabOneScreen() {
       try {
         const manager = getManager();
         const id = generateId(item.subject + item.content + item.createdByAccount);
-        await manager.setHomeworkCompletion(homeworkItem, !homeworkItem.isDone);
+        if(!homeworkItem.custom){
+          await manager.setHomeworkCompletion(homeworkItem, !homeworkItem.isDone);
+        }
         updateHomeworkIsDone(id, !homeworkItem.isDone)
         setRefreshTrigger(prev => prev + 1);
         setHomework(prev => ({
@@ -644,6 +648,12 @@ export default function TabOneScreen() {
         >
           <Papicons name={"Search"} color={"#C54CB3"} size={26} />
         </NativeHeaderPressable>
+          <NativeHeaderPressable
+            onPressIn={() => {
+              router.push("./tasks/create");
+            }}>
+            <Papicons name={"Add"} color={"#C54CB3"} size={26} />
+          </NativeHeaderPressable>
       </NativeHeaderSide>
     </>
   );

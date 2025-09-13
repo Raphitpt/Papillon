@@ -323,5 +323,21 @@
 
   "Tasks_Sorting_Methods_DueDate": "Date de rendu",
   "Tasks_Sorting_Methods_Subject": "Matières",
-  "Tasks_Sorting_Methods_Done": "Non terminé"
+  "Tasks_Sorting_Methods_Done": "Non terminé",
+
+  "Tasks_Create_Title": "Nouveau devoir",
+  "Tasks_Subject_Label": "Nom de la matière",
+  "Tasks_Subject_Placeholder": "Ex: Mathématiques",
+  "Tasks_Content_Label": "Contenu de la tâche",
+  "Tasks_Content_Placeholder": "Décrivez le devoir à faire...",
+  "Tasks_DueDate_Label": "Date de fin",
+  "Tasks_Type_Label": "Type de devoir",
+  "Tasks_Type_Evaluation": "Évaluation",
+  "Tasks_Type_Evaluation_Description": "Ce devoir compte pour une note",
+  "Tasks_Create_Success": "Le devoir a été créé avec succès !",
+  "Tasks_Create_Error": "Impossible de créer le devoir. Veuillez réessayer.",
+  "Tasks_Create_Required": "Veuillez remplir tous les champs obligatoires.",
+  "Tasks_Create_NoAccount": "Aucun compte sélectionné.",
+  "Tasks_Create_Confirm": "Succès",
+  "Tasks_Create_ErrorTitle": "Erreur"
 }

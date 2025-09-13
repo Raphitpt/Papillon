@@ -141,7 +141,9 @@ const IndexScreen = () => {
   async function setHomeworkAsDone(homework: Homework) {
     const manager = getManager();
     const id = generateId(homework.subject + homework.content + homework.createdByAccount);
-    await manager.setHomeworkCompletion(homework, !homework.isDone);
+    if(!homework.custom){
+      await manager.setHomeworkCompletion(homework, !homework.isDone);
+    }
     updateHomeworkIsDone(id, !homework.isDone)
     setRefreshTrigger(prev => prev + 1);
     setFreshHomeworks(prev => ({

@@ -131,6 +131,42 @@ export async function updateHomeworkIsDone(homeworkId: string, isDone: boolean) 
   });
 }
 
+export async function getHomeworkById(homeworkId: string): Promise<SharedHomework | null> {
+  try {
+    const db = getDatabaseInstance();
+    const result = await db.get('homework').query(Q.where('homeworkId', homeworkId)).fetch();
+    if (result.length === 0) return null;
+    return mapHomeworkToShared(result[0] as Homework);
+  } catch (e) {
+    warn(String(e));
+    return null;
+  }
+}
+
+export async function updateHomeworkInDatabase(update: {
+  id: string,
+  subject?: string,
+  content?: string,
+  dueDate?: Date,
+  evaluation?: boolean
+}) {
+  const db = getDatabaseInstance();
+  const existing = await db.get('homework').query(Q.where('homeworkId', update.id)).fetch();
+  if (existing.length === 0) {
+    throw new Error(`Homework with ID ${update.id} not found`);
+  }
+  const recordToUpdate = existing[0];
+  await db.write(async () => {
+    await recordToUpdate.update((record: Model) => {
+      const homework = record as Homework;
+      if (update.subject !== undefined) homework.subject = update.subject;
+      if (update.content !== undefined) homework.content = update.content;
+      if (update.dueDate !== undefined) homework.dueDate = update.dueDate.getTime();
+      if (update.evaluation !== undefined) homework.evaluation = update.evaluation;
+    });
+  });
+}
+
 export function getDateRangeOfWeek(weekNumber: number, year = new Date().getFullYear()) {
   const janFirst = new Date(year, 0, 1);
   const daysOffset = (weekNumber - 1) * 7;
