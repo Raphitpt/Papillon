@@ -126,6 +126,10 @@ export default function OnboardingLayout() {
                   options={{ ...newScreenOptions }}
                   initialParams={{ instanceId: "" }}
                 />
+                <Stack.Screen
+                  name="university/skolae/credentials"
+                  options={{ ...newScreenOptions }}
+                />
             </Stack>
         </View>
     );

@@ -27,6 +27,7 @@ import { error, log, warn } from "@/utils/logger/logger";
 
 import { Balance } from "./balance";
 import { Kid } from "./kid";
+import module from "@/services/appscho";
 
 export class AccountManager {
   private clients: Record<string, SchoolServicePlugin> = {};
@@ -552,6 +553,12 @@ export class AccountManager {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const module = require("@/services/appscho/index");
       return new module.Appscho(service.id);
+    }
+
+    if (service.serviceId === Services.SKOLAE) {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const module = require("@/services/skolae/index");
+      return new module.Skolae(service.id);
     }
 
     error("We're not able to find a plugin for service: " + service.serviceId + ". Please review your implementation", "AccountManager.getServicePluginForAccount");

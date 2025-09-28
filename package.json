@@ -69,6 +69,7 @@
     "expo-web-browser": "~15.0.7",
     "ezly": "^1.4.0",
     "fflate": "^0.8.2",
+    "ges-api-react-native": "1.0.3",
     "htmlparser2": "^10.0.0",
     "i18next": "^25.2.1",
     "langdetect": "^0.2.1",

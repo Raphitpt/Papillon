@@ -94,5 +94,6 @@ export enum Services {
   TURBOSELF,
   ARD,
   IZLY,
-  APPSCHO
+  APPSCHO,
+  SKOLAE
 }

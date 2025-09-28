@@ -31,6 +31,8 @@ import { Balance } from "./balance";
 import { Kid } from "./kid";
 import { User } from "appscho";
 import { Appscho } from "@/services/appscho";
+import { GesAuthenticationToken } from "ges-api-react-native";
+import { Skolae } from "@/services/skolae";
 
 /** Represents a plugin for a school service.
  *
@@ -51,11 +53,12 @@ export interface SchoolServicePlugin {
     | ArdClient
     | Identification
     | User
+    | GesAuthenticationToken
     | undefined;
 
   refreshAccount: (
     credentials: Auth
-  ) => Promise<Pronote | Skolengo | EcoleDirecte | TurboSelf | ARD | Izly | Appscho>;
+  ) => Promise<Pronote | Skolengo | EcoleDirecte | TurboSelf | ARD | Izly | Appscho | Skolae>;
   getKids?: () => Kid[];
   getCanteenKind?: () => CanteenKind;
   getHomeworks?: (weekNumber: number) => Promise<Homework[]>;

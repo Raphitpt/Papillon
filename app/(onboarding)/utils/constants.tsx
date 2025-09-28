@@ -141,6 +141,14 @@ export function GetSupportedUniversities(redirect: (path: { pathname: string }) 
         //     onPress: () => { }
         // },
         {
+            name: "skolae",
+            title: "Skolae",
+            hasLimitedSupport: false,
+            image: require("@/assets/images/univ/skolae.png"),
+            type: "main",
+            onPress: () => { redirect({ pathname: './skolae/credentials' }); },
+        },
+        {
           name: "appscho",
           title: "Autres universités",
           hasLimitedSupport: false,
