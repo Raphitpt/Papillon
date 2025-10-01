@@ -1,4 +1,5 @@
 import { Auth } from "@/stores/account/types";
+import { useAccountStore } from "@/stores/account";
 import { GesAPI, GesAuthenticationToken } from "ges-api-react-native";
 
 export async function refreshSkolaeAccount(
@@ -21,6 +22,8 @@ export async function refreshSkolaeAccount(
       `Failed to refresh Skolae session: ${error}`
     );
   }
+
+  useAccountStore.getState().updateServiceAuthData(accountId, authData);
 
   return { auth: authData, session };
 }
