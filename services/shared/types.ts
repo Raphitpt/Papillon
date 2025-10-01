@@ -22,6 +22,7 @@ import { News } from "@/services/shared/news";
 import { Course, CourseDay, CourseResource } from "@/services/shared/timetable";
 import { Auth, Services } from "@/stores/account/types";
 
+import { Alise } from "../alise";
 import { ARD } from "../ard";
 import { EcoleDirecte } from "../ecoledirecte";
 import { Izly } from "../izly";
@@ -58,7 +59,7 @@ export interface SchoolServicePlugin {
 
   refreshAccount: (
     credentials: Auth
-  ) => Promise<Pronote | Skolengo | EcoleDirecte | TurboSelf | ARD | Izly | Appscho | Skolae>;
+  ) => Promise<Pronote | Skolengo | EcoleDirecte | TurboSelf | ARD | Izly | Appscho | Skolae | Alise>;
   getKids?: () => Kid[];
   getCanteenKind?: () => CanteenKind;
   getHomeworks?: (weekNumber: number) => Promise<Homework[]>;
