@@ -110,6 +110,7 @@ const TaskItem = memo(({ item, fromCache = false, index, onProgressChange }: {
         index={index}
         magic={magic}
         fromCache={fromCache ?? false}
+        attachments={item.attachments}
         onProgressChange={(newProgress: number) => onProgressChange(item, newProgress)}
       />
     );
@@ -257,7 +258,7 @@ export default function TabOneScreen() {
         alert.showAlert({
           title: "Erreur de chargement",
           message: "Impossible de charger les devoirs",
-          description: "Veuillez vérifier votre connexion internet et réessayer.",
+          description: "Vérifie ta connexion internet et réessaie.",
           color: "#D60046",
           icon: "TriangleAlert",
           technical: String(error)
