@@ -165,7 +165,9 @@ export function GetSupportedUniversities(redirect: (path: { pathname: string, op
       hasLimitedSupport: false,
       image: require("@/assets/images/univ_lannion.png"),
       type: "main",
-      onPress: () => { }
+      onPress: () => {
+        redirect({ pathname: './lannion/credentials' });
+      },
     },
     {
       name: "limited-functions",
@@ -206,7 +208,7 @@ export function GetSupportedUniversities(redirect: (path: { pathname: string, op
       image: require("@/assets/images/univ_paris_sorbonne.png"),
       type: "main",
       onPress: () => { }
-    }*/
+    } */
   ]
 }
 
